@@ -30,7 +30,7 @@ Original Author: https://github.com/alinmear/docker-conanexiles
 ### Get started
 
 ```sh
-curl -LJO https://raw.githubusercontent.com/garretsidzaka/docker-conanexiles/master/docker-compose.yml
+curl -LJO https://raw.githubusercontent.com/Nanobarbalunga/docker-conanexiles/master/docker-compose.yml
 docker-compose pull
 ```
 
