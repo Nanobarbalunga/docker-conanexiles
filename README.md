@@ -1,11 +1,11 @@
 # docker-conanexiles
 
-This image was forked from the Alinmear's excellent docker image.  The underlying stack has been updated to 2024 versions, and there are various tweaks and fixes added, as well as additional in-line documentation
-There are more features on the roadmap, and community feedback, issues, and code pushes are welcome.
+This image was forked from the GarretSidzaka docker-image. 
 
 ---
 
 Source of server tweaks: <https://steamcommunity.com/sharedfiles/filedetails/?id=2130895654>
+Forked repository <https://github.com/GarretSidzaka/docker-conanexiles> (<https://github.com/GarretSidzaka>)
 Original Author: https://github.com/alinmear/docker-conanexiles
 
 ---
