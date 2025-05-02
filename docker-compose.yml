@@ -8,21 +8,21 @@ services:
     environment:
       # server settings
       - "CONANEXILES_CMDSWITCHES='-Port=7777 -QueryPort=27020'"
-      - "CONANEXILES_SERVER_TYPE=pvp"
-      - "CONANEXILES_ServerSettings_ServerSettings_AdminPassword=agoodpassword"
+      - "CONANEXILES_SERVER_TYPE=${GAME_MODE:-pve}"
+      - "CONANEXILES_ServerSettings_ServerSettings_AdminPassword=${SERVER_PASSWORD:-password}"
       #custom map file
       #- "CONANEXILES_Engine_/Script/EngineSettings.GameMapsSettings_ServerDefaultMap=/Game/Mods/Savage_Wilds/Savage_Wilds"
-      - "CONANEXILES_ServerSettings_ServerSettings_IsVACEnabled=True"
-      - "CONANEXILES_ServerSettings_ServerSettings_IsBattlEyeEnabled=True"
-      - "CONANEXILES_ServerSettings_ServerSettings_serverRegion=1"
+      - "CONANEXILES_ServerSettings_ServerSettings_IsVACEnabled=:${VAC_ENABLED:-False}"
+      - "CONANEXILES_ServerSettings_ServerSettings_IsBattlEyeEnabled=:${BATTLE_EYE_ENABLED:-False}"
+      - "CONANEXILES_ServerSettings_ServerSettings_serverRegion=:${SERVER_REGION:-1}"
       - "CONANEXILES_PORT=7777"
       - "CONANEXILES_QUERYPORT=27020"
-      - "CONANEXILES_Engine_OnlineSubSystemSteam_ServerName=MySingleServer"
-      - "CONANEXILES_INSTANCENAME=MySingleInstance"
-      - "CONANEXILES_Game_RconPlugin_RconEnabled=1"
-      - "CONANEXILES_Game_RconPlugin_RconPassword=agoodpassword"
+      - "CONANEXILES_Engine_OnlineSubSystemSteam_ServerName=${SERVER_NAME:-CinappiServer}"
+      - "CONANEXILES_INSTANCENAME=${SERVER_NAME:-MySingle}Instance"
+      - "CONANEXILES_Game_RconPlugin_RconEnabled=${RCON_ENABLED:-1}"
+      - "CONANEXILES_Game_RconPlugin_RconPassword=${SERVER_PASSWORD:-password}"
       - "CONANEXILES_Game_RconPlugin_RconPort=25575"
-      - "CONANEXILES_Game_RconPlugin_RconMaxKarma=60"
+      - "CONANEXILES_Game_RconPlugin_RconMaxKarma=${RCON_KARMA:-60}"
       - "CONANEXILES_UPDATE_SHUTDOWN_TIMER=15"
       - "CONANEXILES_ServerSettings_ServerSettings_CorpsesPerPlayer=3"
       - "CONANEXILES_ServerSettings_ServerSettings_MaxDeathMapMarkers=3"
@@ -31,7 +31,7 @@ services:
       # Installed Mods
       #880454836 Pippi Server manager
       #1823412793 mod control panel
-      - "CONANEXILES_MODS=880454836,1823412793"   
+      - "CONANEXILES_MODS=${SERVER_MODS:-880454836,1823412793}"   
       # logging
       - "CONANEXILES_Engine_Core.Log_LogStreaming=Error"
       - "CONANEXILES_Engine_Core.Log_GlobalServerChannel=Error"
@@ -208,14 +208,14 @@ services:
       - "CONANEXILES_ServerSettings_ServerSettings_LQAVPFadeTime=0.100000"
       - "CONANEXILES_ServerSettings_ServerSettings_LQAVPMethod=2"
     ports:
-      - "7777:7777/tcp"
-      - "7777:7777/udp"
-      - "7778:7778/tcp"
-      - "7778:7778/udp"
-      - "27020:27020/tcp"
-      - "27020:27020/udp"
-      - "25575:25575/tcp"
-      - "25575:25575/udp"
+      - "${STEAM_PORT:-7777}:7777/tcp"
+      - "${STEAM_PORT:-7777}:7777/udp"
+      - "${STEAM_PORT_SECONDARY:-7778}:7778/tcp"
+      - "${STEAM_PORT_SECONDARY:-7778}:7778/udp"
+      - "${SERVER_PORT:-27020}:27020/tcp"
+      - "${SERVER_PORT:-27020}:27020/udp"
+      - "${RCON_PORT:-25575}:25575/tcp"
+      - "${RCON_PORT:-25575}:25575/udp"
     volumes:
         - conanexiles:/conanexiles
         - /etc/localtime:/etc/localtime:ro
